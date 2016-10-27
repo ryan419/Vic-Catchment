@@ -1,0 +1,26 @@
+<div ng-controller="q2Ctrl">
+	<div class="question-title">Question2 Solution</div>
+	<blockquote class="qeustion-extra-description">
+	Assume 3 endpoint are stored in A, B, C
+	</blockquote>
+	<h3>Sequentially</h3>
+	<pre>
+	$http({method: 'GET', url: A, cache: 'true'}).then(function(responseA){
+		$http({method: 'GET', url: B, cache: 'true'}).then(function(responseB){
+			$http({method: 'GET', url: C, cache: 'true'}).then(function(responseC){
+				doSomethingWithABC(responseA, responseB, responseC);
+			});
+		});
+	});
+	</pre>
+	<h3>In Parallel</h3>
+	<pre>
+	var promiseA = $http({method: 'GET', url: A, cache: 'true'});
+	var promiseB = $http({method: 'GET', url: B, cache: 'true'});
+	var promiseC = $http({method: 'GET', url: C, cache: 'true'});
+
+	Promise.all([promiseA,promiseB,promiseC].then(function(response){
+		doSomethingWithABC(response[0], response[1], response[2]);
+	});
+	</pre>
+</div>

@@ -1,0 +1,30 @@
+<div ng-controller="q1Ctrl">
+	<div class="question-title">Question1 Solution</div>
+	<pre>
+		var getResult = function(ar) {
+			return ar.reduce(function(sum, item) {
+				if (item instanceof Array) {
+					sum = sum + getResult(item);
+				} else if (typeof item === 'number') {
+					sum = sum + item;
+				}
+				return sum;
+			}, 0);
+		};
+		console.log(getResult(arr));
+	</pre>
+	<div class="row">
+		<div class="col-md-6">
+			<input ng-model="arr | json" class="form-control" id="exampleInputEmail1" placeholder="Please input an array">
+		</div>
+		<div class="col-md-5">
+			<button class="btn btn-default" ng-click="getResult(arr)">Calculate</button>
+		</div>
+	</div>
+	<div class="row" ng-show="result != undefined">
+		<div class="col-md-12">
+			Result is <STRONG>{{result}}</STRONG>
+		</div>
+		
+	</div>
+</div>

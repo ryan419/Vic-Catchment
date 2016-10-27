@@ -1,0 +1,30 @@
+<div ng-controller="q3Ctrl">
+	<div class="question-title">Question3 Solution</div>
+	<h4>Solution1</h4>
+	<p>
+		If the Base.render() is given 1 argument
+	</p>
+	<pre>
+		Child.prototype.render = function(data) {
+			this.preRender();
+			var base = Object.getPrototypeOf(this);
+			base.render(data);
+		}
+	</pre>
+	<h4>Solution2</h4>
+	<p>
+		If the Base.render() is given extra arguments
+	</p>
+	<pre>
+		Child.prototype.render = function() {
+			this.preRender();
+			var base = Object.getPrototypeOf(this);
+			base.render.apply(base, arguments);
+		}
+	</pre>
+	<blockquote class="solution-notice">
+		I'm not sure what "given extra arguments" means.
+		So I assume it means Base.render take more arguments like "Base.prototype.render = function(data1, data2){...}"
+	</blockquote>
+
+</div>

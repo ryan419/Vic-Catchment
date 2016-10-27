@@ -1,0 +1,170 @@
+<div ng-controller="q4Ctrl">
+	<div class="question-title">Question4 Solution</div>
+	<div ng-if='currentPage === 1'>
+		<p>This problem should be divided into 3 parts.</p>
+		<h3>1. IE 10+ / Other Modern Browser</h3>
+		<STRONG>History API</STRONG>
+		<p class="solution-description">
+			History API is the easist way to solve this problem. And there is no other calculation or action to implement it.
+		</p>
+		<p class="solution-description">
+			It will maintain your state in IE, if you go back to the previous page.
+		</p>
+		<p class="solution-description">
+			In Chrome, it also triggers a popState event before the scroll event, which means you can read the current scroll position in popState and then reverse it in the scroll event handler with window.scrollTo.
+		</p>
+		<p class="solution-description">
+			Firefox, however, triggers the scroll event before popState, so you have no idea what the old scroll value was in order to restore it.
+		</p>
+		<blockquote class="solution-notice">
+			<p>History API: <a>https://developer.mozilla.org/en-US/docs/Web/API/History</a></p>
+			<p>History API: Scroll Restoration: <a>https://developers.google.com/web/updates/2015/09/history-api-scroll-restoration</a></p>
+			<p>History API Browser Compatibility
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Feature</th>
+							<th>Chrome</th>
+							<th>Firefox (Gecko)</th>
+							<th>Internet Explorer</th>
+							<th>Opera</th>
+							<th>Safari (WebKit)</th>
+						</tr>
+						<tr>
+							<td>Basic support</td>
+							<td><span title="Please update this with the earliest version of support." style="color: #888;">(Yes)</span></td>
+							<td><span title="Please update this with the earliest version of support." style="color: #888;">(Yes)</span></td>
+							<td><span title="Please update this with the earliest version of support." style="color: #888;">(Yes)</span></td>
+							<td><span title="Please update this with the earliest version of support." style="color: #888;">(Yes)</span></td>
+							<td><span title="Please update this with the earliest version of support." style="color: #888;">(Yes)</span></td>
+						</tr>
+						<tr>
+							<td><code>pushState</code> and <code>replaceState</code></td>
+							<td>5.0</td>
+							<td>4.0 [1]</td>
+							<td>10</td>
+							<td>11.5</td>
+							<td>5</td>
+						</tr>
+						<tr>
+							<td><code>scrollRestoration</code></td>
+							<td>46.0</td>
+							<td><a href="/en-US/Firefox/Releases/46" title="Released on 2016-04-19.">46.0</a> (46.0)</td>
+							<td><span style="color: #f00;">Not&nbsp;supported</span></td>
+							<td>33</td>
+							<td><span style="color: #f00;">Not&nbsp;supported</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</p>
+		</blockquote>
+	</div>
+	<div ng-if='currentPage === 2'>
+		<h3>2. Single Page Application</h3>
+		<p class="solution-description">
+			<STRONG>SPA can store data in the app.</STRONG>
+		</p>
+		<p class="solution-description">
+			The solution is to store required data in app, when it goes back, get the data and scroll to the position.
+		</p>
+		<p class="solution-description">
+			<ol class="solution-list">
+				<li>The item page link should not be a <STRONG>link</STRONG>, it should invoke a 'onClick' function.</li>
+				<li>In the 'onClick' function, do two things. <em>(In AngularJS, we store this information in Service or Factory)</em>
+					<ul>
+						<li>
+							Save current loaded items.	
+						</li>
+						<li>
+							Save the clicked element's distance to top of parent div: <STRONG>element.offsetTop</STRONG>.
+						</li>
+						<li>
+							Save the parent div's distance to top: <STRONG>element.offsetTop</STRONG>.
+						</li>
+					</ul>
+				</li>
+				<li>
+					When we return to list page from item detail page. We get those stored data in the previous step.
+					<ul>
+						<li>
+							Display all the items.	
+						</li>
+						<li>
+							Using <STRONG>window.scrollTo(0, element.offsetTop + parentDiv.offsetTop)</STRONG> to get to the previous position.
+						</li>
+					</ul>  
+				</li>
+			</ol>
+		</p>
+		<blockquote class="solution-notice">
+			<p>Windows.scrollTo: <a>https://developer.mozilla.org/en/docs/Web/API/Window/scrollTo</a></p>
+			<p>HTMLElement.offsetHeight: <a>https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetHeight</a></p>
+			<p><strong>I've also done a infinite scroll before. As I used modal to display the detail information, there was no need to consider this problem.</strong>
+				<a href="http://www.ghplat.com:8099/#/kol">http://www.ghplat.com:8099/#/kol</a>
+			</p>
+		</blockquote>
+	</div>
+	<div ng-if='currentPage === 3'>
+		<h3>3. Multi Page Application</h3>
+		<p class="solution-description">
+			<STRONG>IE 8 support localStorage or sessionStorage</STRONG>
+		</p>
+		<p class="solution-description">
+			The solution is the same as previous one, the difference is to store data in <strong> localStorage/sessionStorage </strong>.
+		</p>
+		<blockquote class="solution-notice">
+			<p>Window.localStorage: <a>https://developer.mozilla.org/en/docs/Web/API/Window/localStorage</a></p>
+			<p>Window.sessionStorage: <a>https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage</a></p>
+			<p> Window.localStorage & Window.sessionStorage Browser Compatibility
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Feature</th>
+							<th>Chrome</th>
+							<th>Firefox (Gecko)</th>
+							<th>Internet Explorer</th>
+							<th>Opera</th>
+							<th>Safari (WebKit)</th>
+						</tr>
+						<tr><iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe></tr>
+						<tr>
+							<td>localStorage</td>
+							<td>4</td>
+							<td>3.5</td>
+							<td>8</td>
+							<td>10.50</td>
+							<td>4</td>
+						</tr>
+						<tr>
+							<td>sessionStorage</td>
+							<td>5</td>
+							<td>2</td>
+							<td>8</td>
+							<td>10.50</td>
+							<td>4</td>
+						</tr>
+					</tbody>
+				</table>
+			</p>
+		</blockquote>
+		<blockquote class="solution-notice">
+			This website is developled using AngularJS.
+			<p>
+			Github<i class="fa fa-github" aria-hidden="true"></i>
+			</p>
+		</blockquote>
+		<hr>
+		<p class="solution-description">
+			BTW, I love your reactJS meetup. This is me. 
+			<img ng-src="${require('../../../../assets/images/react.png')}" class="react-img">
+		</p>
+	</div>
+	<nav aria-label="Page navigation">
+		<ul class="pagination">
+			<li ng-class="{'disabled': currentPage === 1}"><a ng-click="setPage(1)">1</a></li>
+			<li ng-class="{'disabled': currentPage === 2}"><a ng-click="setPage(2)">2</a></li>
+			<li ng-class="{'disabled': currentPage === 3}"><a ng-click="setPage(3)">3</a></li>
+		</ul>
+	</nav>
+
+</div>

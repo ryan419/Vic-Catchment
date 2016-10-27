@@ -1,0 +1,27 @@
+.question-title{
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+	width: 100%;
+}
+.qeustion-extra-description{
+	font-size: 14px;
+    color: red;
+}
+.solution-notice{
+	font-size: 13px;
+	font-style: italic;
+}
+.table{
+	font-size: 12px;
+}
+.solution-description, .solution-list{
+	font-size: 14px;
+}
+.pagination > li:hover {
+	cursor: pointer;
+}
+.react-img{
+	width: 400px;
+    display: block;
+}
