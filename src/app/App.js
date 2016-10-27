@@ -32,11 +32,10 @@ export default angular
     // Now set up the states
     $stateProvider
       .state('home', {
-        url: "/",
         template: homeTmpl
       })
       .state('home.q1', {
-        url: "/question1",
+        url: "/",
         template: q1Tmpl
       })
       .state('home.q2', {
