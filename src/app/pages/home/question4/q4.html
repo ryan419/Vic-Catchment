@@ -8,7 +8,11 @@
 			History API is the easist way to solve this problem. And there is no other calculation or action to implement it.
 		</p>
 		<p class="solution-description">
-			It will maintain your state in IE, if you go back to the previous page.
+			It will restore your state to the previous position in browsers, if you go back to the previous page.
+		</p>
+		<hr>
+		<p class="solution-description">
+			However, it has its disadvantage, sometimes the restored position wasn't accurate.
 		</p>
 		<p class="solution-description">
 			In Chrome, it also triggers a popState event before the scroll event, which means you can read the current scroll position in popState and then reverse it in the scroll event handler with window.scrollTo.
