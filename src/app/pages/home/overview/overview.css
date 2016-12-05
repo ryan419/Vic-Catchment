@@ -1,0 +1,15 @@
+div[uib-carousel] img{
+	height: 300px;
+    min-width: 100%;
+}
+div[uib-carousel] p{
+	font-size: 13px;
+}
+.overview-row{
+	margin-top: 40px;
+}
+#saving-total>div{
+	border: 1px solid rgb(224, 217, 217);
+	padding: 20px 10px;
+	border-radius: 5px;
+}

@@ -1,0 +1,46 @@
+#vic-preview{
+	font-size: 16px;
+}
+#vic-preview .modal-header{
+	text-align: center;
+	font-size: 21px;
+}
+#vic-preview .modal-body{
+	padding: 20px 40px;
+}
+#vic-preview .register-item{
+	width: 100%;
+	margin-top: 30px
+}
+#vic-preview .register-btn{
+	 margin-left: 10px;
+	 background-color: rgb(251, 88, 101);
+	 border:none;
+}
+/*error msg*/
+.error-msg{
+	color: rgb(251, 88, 101);
+}
+#vic-preview .has-error input{
+	border-color:  rgb(251, 88, 101);
+}
+#vic-preview .login-error{
+	margin-left: 10px;
+	color: rgb(251, 88, 101);
+}
+
+#vic-report-preview{
+	height: 100%;
+	overflow-y: auto;
+	font-size: 14px;
+}
+
+
+.app-modal-window .modal-content {
+  min-height: 100%;
+  width: 100%;
+}
+.app-modal-window .modal-dialog {
+  margin: 0;
+  height: 100%
+}

@@ -4,6 +4,7 @@ let path = require('path');
 let webpack = require('webpack');
 let baseConfig = require('./base');
 let defaultSettings = require('./defaults');
+let ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 
 let config = Object.assign({}, baseConfig, {
   entry: [
@@ -15,7 +16,10 @@ let config = Object.assign({}, baseConfig, {
   devtool: 'eval-cheap-module-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new ServiceWorkerWebpackPlugin({
+      entry: path.join(__dirname, '../src/sw.js'),
+    })
   ],
   module: defaultSettings.getDefaultModules()
 });

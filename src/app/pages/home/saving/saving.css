@@ -1,0 +1,27 @@
+#saving-list{
+	font-size: 13px;
+	list-style-type: none;
+}
+#saving-list img{
+	width: 100%;
+}
+#saving-list .row{
+	margin-top: 0;
+}
+#saving-list li{
+	border-bottom: 1px rgba(158, 158, 158, 0.48) dashed;
+    padding: 10px 0 10px 0;
+}
+#saving-list li a{
+	text-decoration: none;
+	cursor: pointer;
+}
+#saving-list li:hover{
+	background-color: white;
+}
+#clear-savings{
+	margin-left: 38px;
+}
+.saving-list-item{
+	vertical-align: center;
+}

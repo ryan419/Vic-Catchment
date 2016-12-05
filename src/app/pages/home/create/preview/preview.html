@@ -1,0 +1,43 @@
+<div id="vic-preview">
+    <div class="modal-header">
+        <p>Report Preview<span class="visible-xs pull-right glyphicon glyphicon-remove" ng-click="cancel()"></span></p>
+
+    </div>
+
+    <div class="modal-body">
+        <div id="vic-report-preview">
+            <!-- Species -->
+            <div class="wrapper">
+
+                <div class="card radius shadowDepth1">
+                    <div class="card__image border-tlr-radius">
+                        <img ng-src="${require('../../../../../assets/Birds/Bird Species.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Bird Species'">
+                        <img ng-src="${require('../../../../../assets/Birds/Australasian Bittern.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australasian Bittern'">
+                        <img ng-src="${require('../../../../../assets/Birds/Australasian Darter.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australasian Darter'">
+                        <img ng-src="${require('../../../../../assets/Birds/Australasian Grebe.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australasian Grebe'">
+                        <img ng-src="${require('../../../../../assets/Birds/Australasian Pipit.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australasian Pipit'">
+                        <img ng-src="${require('../../../../../assets/Birds/Australasian Shoveler.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australasian Shoveler'">
+                        <img ng-src="${require('../../../../../assets/Birds/Australian Hobby.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australian Hobby'">
+                        <img ng-src="${require('../../../../../assets/Birds/Australian Pelican.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australian Pelican'">
+                        <img ng-src="${require('../../../../../assets/Birds/Australian Reed-Warbler.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australian Reed-Warbler'">
+                        <img ng-src="${require('../../../../../assets/Birds/Australian Shelduck.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australian Shelduck'">
+                        <img ng-src="${require('../../../../../assets/Birds/Australian White Ibis.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australian White Ibis'">
+                    </div>
+
+                    <div class="card__content card__padding">
+                        <article class="card__article">
+                            <h4 ng-if="report.species != 'Bird Species'">{{report.species}}</h4>
+                            <h4 ng-if="report.species === 'Bird Species'">Unknown</h4>
+                            <div ng-if="report.species != 'Bird Species' && report.numOfBird != undefined" class="card__numofbirds"><i>Number of Birds: </i>{{report.numOfBird}}</div>
+                            <div ng-if="report.species === 'Bird Species'" class="card__numofbirds"><i>Number of Birds: </i>Unknown</div>
+                            <div ng-if="report.location != undefined" class="card__numofbirds"><i>Location: </i>{{report.location}}</div>
+                            <div ng-if="report.location === undefined" class="card__numofbirds"><i>Location: </i>Unknown</div>
+                            <div ng-bind-html="report.comment" class="card-text" ng-if="report.species != 'Bird Species' && report.numOfBird != undefined"></div>
+                            <div class="card-text" ng-if="report.species === 'Bird Species'">No comment yet.</div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

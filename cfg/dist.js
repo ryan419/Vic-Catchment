@@ -8,6 +8,7 @@ let AssetsPlugin = require('assets-webpack-plugin');
 let CompressionPlugin = require('compression-webpack-plugin');
 let S3Plugin = require('webpack-s3-plugin');
 let fs = require('fs');
+let ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 
 let config = Object.assign({}, baseConfig, {
     entry: path.join(__dirname, '../src/index.js'),
@@ -18,7 +19,9 @@ let config = Object.assign({}, baseConfig, {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
         }),
-        new webpack.optimize.UglifyJsPlugin({ sourceMap: false }),
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: false
+        }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.AggressiveMergingPlugin(),
         new webpack.NoErrorsPlugin(),
@@ -30,6 +33,12 @@ let config = Object.assign({}, baseConfig, {
         //     minRatio: 0.8
         // }),
         new AssetsPlugin(),
+        new ServiceWorkerWebpackPlugin({
+            entry: path.join(__dirname, '../src/sw.js'),
+            excludes: [
+                '**/*.map',
+            ],
+        }),
         //new S3Plugin({
         //    s3Options: {
         //        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -66,4 +75,4 @@ let config = Object.assign({}, baseConfig, {
 config.output.publicPath = defaultSettings.publicPath;
 config.output.filename = '[name]-gh-bundle-[hash].js',
 
-module.exports = config;
+    module.exports = config;

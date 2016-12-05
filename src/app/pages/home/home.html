@@ -1,14 +1,40 @@
-<div ng-controller="HomeCtrl">
-	<img ng-src="${require('../../../assets/images/bg.jpg')}" style="width: 100%" ng-mousemove="onMouseMove()" id="bgImg">
-	<div id="questionArea" class="col-md-8 col-md-offset-2">
-		<div id="questionProcess">
-			<div id="steps">
-				<div class="step active" data-desc="Question1" ui-sref-active='done' ui-sref='home.q1'>1</div>
-				<div class="step active" data-desc="Question2" ui-sref-active='done' ui-sref='home.q2'>2</div>
-				<div class="step active" data-desc="Question3" ui-sref-active='done' ui-sref='home.q3'>3</div>
-				<div class="step active" data-desc="Question4" ui-sref-active='done' ui-sref='home.q4'>4</div>
+<div ng-controller="HomeCtrl" style="height: 100%">
+	<nav class="navbar navbar-default sidebar" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" ng-click="navCollapsed = !navCollapsed">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>      
+			</div>
+			<div class="collapse navbar-collapse" uib-collapse="navCollapsed">
+				<ul class="nav navbar-nav">
+					<li id="logo-container" class="pull-right hidden-xs logo-container">
+						<div>
+							<img src="${require('../../../assets/images/birdlogo.jpg')}" ng-if="$root.global.username === 'ryanxiao'">
+							<img src="${require('../../../assets/images/user.png')}" ng-if="$root.global.username === undefined" class="clickable" ng-click="login('sm')">
+						</div>
+						<p ng-if="$root.global.username === 'ryanxiao'">Ryan Xiao <span class="glyphicon glyphicon-log-out clickable" aria-hidden="true" ng-click="logout()"></span></p>
+						<p ng-if="$root.global.username === undefined" class="clickable" ng-click="login('sm')">Click to Login</p>
+					</li>
+					<li id='vic-login-user' class="visible-xs" ng-if="$root.global.username === 'ryanxiao'"> <a>Ryan Xiao <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+					<li class="visible-xs divider" ng-if="$root.global.username === 'ryanxiao'"></li>
+					
+					<li ui-sref-active="active">
+					<a ui-sref="home.overview">Overview<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a>
+					</li>
+					<li ui-sref-active="active">
+					<a ui-sref="home.create">Create Report<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-file"></span></a>
+					</li ui-sref-active="active">          
+					<li ui-sref-active="active"><a ui-sref="home.saving">Saved Reports<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-book"></span></a></li>        
+					<li ui-sref-active="active"><a ui-sref="home.species">Bird Species<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-leaf"></span></a></li>
+					<li class="visible-xs" ng-if="$root.global.username === undefined"><a class="clickable" ng-click="loginMobile()">Login</a></li>
+					<li class="visible-xs" ng-if="$root.global.username === 'ryanxiao'"> <a ng-click="logout()" class="clickable" >Logout</a> </li>
+				</ul>
 			</div>
 		</div>
-		<div id="questionContent" ui-view></div>
-	</div>
+	</nav>
+	<div id="main-part" ui-view></div>
 </div>

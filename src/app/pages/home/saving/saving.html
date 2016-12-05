@@ -1,0 +1,51 @@
+<div ng-controller="SavingCtrl">
+	<h1 class="hidden-xs"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Saved Reports</h1>
+	<h2 class="visible-xs"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Saved Report</h2>
+	<div class="row app-content">
+		<ul id='saving-list'>
+			<li id="saving-header">
+				<div class="row">
+					<div class="col-md-offset-2 col-sm-offset-3 col-md-3 col-sm-3 col-xs-5">
+						<h4>Title</h4>
+					</div>
+					<div class="col-md-4 col-sm-3 col-xs-4">
+						<h4>Saving Time</h4>
+					</div>
+				</div>
+			</li>
+			<li class="saving-list-item" ng-repeat="report in reports">
+				<div class="row">
+					<div class="col-md-2 col-sm-3 hidden-xs">
+						<img ng-src="${require('../../../../assets/Birds/Bird Species.jpg')}" ng-if="report.species === 'Bird Species'">
+						<img ng-src="${require('../../../../assets/Birds/Australasian Bittern.jpg')}" ng-if="report.species === 'Australasian Bittern'">
+						<img ng-src="${require('../../../../assets/Birds/Australasian Darter.jpg')}" ng-if="report.species === 'Australasian Darter'">
+						<img ng-src="${require('../../../../assets/Birds/Australasian Grebe.jpg')}" ng-if="report.species === 'Australasian Grebe'">
+						<img ng-src="${require('../../../../assets/Birds/Australasian Pipit.jpg')}" ng-if="report.species === 'Australasian Pipit'">
+						<img ng-src="${require('../../../../assets/Birds/Australasian Shoveler.jpg')}" ng-if="report.species === 'Australasian Shoveler'">
+						<img ng-src="${require('../../../../assets/Birds/Australian Hobby.jpg')}" ng-if="report.species === 'Australian Hobby'">
+						<img ng-src="${require('../../../../assets/Birds/Australian Pelican.jpg')}" ng-if="report.species === 'Australian Pelican'">
+						<img ng-src="${require('../../../../assets/Birds/Australian Reed-Warbler.jpg')}" ng-if="report.species === 'Australian Reed-Warbler'">
+						<img ng-src="${require('../../../../assets/Birds/Australian Shelduck.jpg')}" ng-if="report.species === 'Australian Shelduck'">
+						<img ng-src="${require('../../../../assets/Birds/Australian White Ibis.jpg')}" ng-if="report.species === 'Australian White Ibis'">
+					</div>
+					<div class="col-md-3 col-sm-3 col-xs-5">
+						<h4 ng-if="report.species != 'Bird Species'">{{report.species}}</h4>
+						<h4 ng-if="report.species === 'Bird Species'">Unknown</h4>
+					</div>
+					<div class="col-md-4 col-sm-3 col-xs-4">
+						<h5> {{report.savingTime}}</h5>
+					</div>
+					<div class="col-md-3 col-sm-3 col-xs-3">
+						<p><a ng-click="edit(report)"><span class="glyphicon glyphicon-edit"> Edit </span></a></p>
+						<p><a ng-click="delete(report)"><span class="glyphicon glyphicon-trash"> Delete </span></a></p>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<p>
+			<a id='clear-savings' class="btn btn-danger" ng-click="clear()">Clear All Savings</a>
+		</p>
+	</div>
+
+
+</div>

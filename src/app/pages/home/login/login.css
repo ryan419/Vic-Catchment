@@ -1,0 +1,43 @@
+#vic-login{
+	font-size: 16px;
+}
+#vic-login .modal-header{
+	text-align: center;
+	font-size: 21px;
+}
+#vic-login .modal-body{
+	padding: 20px 40px;
+}
+#vic-login .register-item{
+	width: 100%;
+	margin-top: 30px
+}
+#vic-login input{
+	width: 95%;
+	height: 40px;
+	padding: 10px 15px;
+    border: 1px solid rgb(170,170,170);
+    border-radius: 2px;
+}
+#vic-login input[type="text"]:focus, #vic-login input[type="password"]:focus {
+	background-color: rgb(255, 248, 229);
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+#vic-login .register-btn{
+	 margin-left: 10px;
+	 background-color: rgb(251, 88, 101);
+	 border:none;
+}
+/*error msg*/
+.error-msg{
+	color: rgb(251, 88, 101);
+}
+#vic-login .has-error input{
+	border-color:  rgb(251, 88, 101);
+}
+#vic-login .login-error{
+	margin-left: 10px;
+	color: rgb(251, 88, 101);
+}

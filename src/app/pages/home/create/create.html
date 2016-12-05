@@ -1,0 +1,115 @@
+<div ng-controller="CreateCtrl" class="content-show-hide" >
+	<h1 class="hidden-xs"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Create Report</h1>
+	<h2 class="visible-xs"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Create Report</h2>
+	<h5 class="visible-xs preview-mobile" ng-click="preview()">Preview<span class="glyphicon glyphicon-zoom-in"></span><h5>
+	<div class="row app-content" ng-form="reportForm">
+		<div class="col-md-offset-1 col-md-5 col-sm-offset-1 col-sm-6 col-xs-offset-1 col-xs-10">
+			<!-- Species -->
+			<div class="row">
+				<h4>Bird Species</h4>
+				<div class="btn-group" uib-dropdown>
+					<button id="species-button" type="button" class="btn" uib-dropdown-toggle ng-disabled="disabled">
+						{{ report.species }} <span class="caret"></span>
+					</button>
+					<input type="hidden" name="species">
+					<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="button-template-url">
+						<li role="menuitem">
+							<a ng-click="changeSpecies('Australasian Bittern')">Australasian Bittern</a>
+						</li>
+						<li role="menuitem">
+							<a ng-click="changeSpecies('Australasian Darter')">Australasian Darter</a>
+						</li>
+						<li role="menuitem">
+							<a ng-click="changeSpecies('Australasian Grebe')">Australasian Grebe</a>
+						</li>
+						<li role="menuitem">
+							<a ng-click="changeSpecies('Australasian Pipit')">Australasian Pipit</a>
+						</li>
+						<li role="menuitem">
+							<a ng-click="changeSpecies('Australasian Shoveler')">Australasian Shoveler</a>
+						</li>
+						<li role="menuitem">
+							<a ng-click="changeSpecies('Australian Hobby')">Australian Hobby</a>
+						</li>
+						<li role="menuitem">
+							<a ng-click="changeSpecies('Australian Reed-Warbler')">Australian Reed-Warbler</a>
+						</li>
+						<li role="menuitem">
+							<a ng-click="changeSpecies('Australian Shelduck')">Australian Shelduck</a>
+						</li>
+						<li role="menuitem">
+							<a ng-click="changeSpecies('Australian White Ibis')">Australian White Ibis</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- Number of Birds -->
+			<div class="row">
+				<h4>Number of Birds</h4>
+				<input ng-model="report.numOfBird" name="numOfBird" class="form-control" ng-pattern="/^([1-9])([0-9]){0,4}$/" ng-class="{ 'has-error' : reportForm.numOfBird.$invalid && !reportForm.numOfBird.$pristine }" required>
+				<p ng-show="reportForm.numOfBird.$invalid && !reportForm.numOfBird.$pristine" class="err-msg">
+					Please input valid number
+				</p>
+			</div>
+			<!-- Location -->
+			<div class="row">
+				<h4>Location</h4>
+				<input ng-model="report.location" name="location" class="form-control" ng-class="{ 'has-error' : reportForm.location.$invalid && !reportForm.location.$pristine }" required>
+				<p ng-show="reportForm.location.$invalid && !reportForm.location.$pristine" class="err-msg">
+					Please input correct location
+				</p>
+			</div>
+			<!-- Comment -->
+			<div class="row">
+				<h4>Comment</h4>
+
+				<text-angular ng-model="report.comment" required></text-angular>
+				<textarea ng-model="report.comment" name="comment" ng-show="false"  ng-required="true"></textarea>
+
+				<p ng-show="reportForm.comment.$invalid" class="err-msg">
+					Please input your comment
+				</p>
+			</div>
+			<div id="function-row" class="row">
+				<!-- Desktop: upload btn: disable when the info is not right -->
+				<a class="btn btn-success hidden-xs" ng-disabled="reportForm.$invalid || report.species === 'Bird Species'" ng-click="upload('desktop')">Upload</a>
+				<!-- Mobile: upload btn: disable when the info is not right -->
+				<a class="btn btn-success visible-xs" ng-disabled="reportForm.$invalid || report.species === 'Bird Species'" ng-click="upload('mobile')">Upload</a>
+				<!-- save button: works at any time -->
+				<a class="btn btn-info" ng-click="save()">Save</a>
+			</div>
+		</div>
+		<!-- preview -->
+		<div id="report-preview" class="col-md-3 col-sm-4 hidden-xs" ng-if="report.species != 'Bird Species'">
+			<!-- Species -->
+			<div class="wrapper">
+
+				<div class="card radius shadowDepth1">
+					<div class="card__image border-tlr-radius">
+						<img ng-src="${require('../../../../assets/Birds/Australasian Bittern.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australasian Bittern'">
+						<img ng-src="${require('../../../../assets/Birds/Australasian Darter.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australasian Darter'">
+						<img ng-src="${require('../../../../assets/Birds/Australasian Grebe.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australasian Grebe'">
+						<img ng-src="${require('../../../../assets/Birds/Australasian Pipit.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australasian Pipit'">
+						<img ng-src="${require('../../../../assets/Birds/Australasian Shoveler.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australasian Shoveler'">
+						<img ng-src="${require('../../../../assets/Birds/Australian Hobby.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australian Hobby'">
+						<img ng-src="${require('../../../../assets/Birds/Australian Pelican.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australian Pelican'">
+						<img ng-src="${require('../../../../assets/Birds/Australian Reed-Warbler.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australian Reed-Warbler'">
+						<img ng-src="${require('../../../../assets/Birds/Australian Shelduck.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australian Shelduck'">
+						<img ng-src="${require('../../../../assets/Birds/Australian White Ibis.jpg')}"  alt="image" class="border-tlr-radius" ng-if="report.species === 'Australian White Ibis'">
+					</div>
+
+					<div class="card__content card__padding">
+						<article class="card__article">
+							<h4>{{report.species}}</h4>
+							<div ng-if="report.species != 'Bird Species' && report.numOfBird != undefined" class="card__numofbirds"><i>Number of Birds: </i>{{report.numOfBird}}</div>
+                            <div ng-if="report.location != undefined" class="card__numofbirds"><i>Location: </i>{{report.location}}</div>
+							<div ng-bind-html="report.comment" class="card-text" ng-if="report.species != 'Bird Species' && report.numOfBird != undefined"></div>
+						</article>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>

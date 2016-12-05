@@ -1,0 +1,27 @@
+<div id="vic-login">
+    <div class="modal-header">
+        <p>Login<span class="visible-xs pull-right glyphicon glyphicon-remove" ng-click="cancel()"></span></p>
+
+    </div>
+
+    <div class="modal-body">
+        <form name="loginForm" ng-submit="submit()" novalidate>
+            <div class="register-item"  ng-class="{ 'has-error' : loginForm.username.$invalid && !loginForm.username.$pristine }">
+                <span class="register-required">*</span>
+                <input type="text" name="username" ng-model="user.username" class="register-field" placeholder="Username" ng-pattern="/^[a-zA-Z0-9]+$/" required>   
+                <span class="error-msg" ng-show="loginForm.username.$invalid && !loginForm.username.$pristine && loginForm.username.$touched && loginForm.username.$error.pattern">Please Enter Valid Username</span> 
+                <span class="error-msg" ng-show="loginForm.username.$invalid && !loginForm.username.$pristine && loginForm.username.$error.required">Please Enter Username</span>
+            </div>
+            <div class="register-item" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
+                <span class="register-required">*</span>
+                <input type="password" name="password" ng-model="user.password" class="register-field" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,12}/" placeholder="Password" required />
+                <span class="error-msg" ng-show="loginForm.password.$invalid && !loginForm.password.$pristine && loginForm.password.$touched && loginForm.password.$error.pattern">Please Enter Valid Password</span>
+                <span class="error-msg" ng-show="loginForm.password.$invalid && !loginForm.password.$pristine && loginForm.password.$error.required">Please Enter Password</span>
+            </div>
+            <div class="register-item">
+                <input class="btn btn-primary register-btn" ng-disabled="loginForm.$invalid" type="submit" value="Log in" />
+                <div class="login-error" ng-show="loginError">Sorry. Your username or password does not match</div>
+            </div>
+        </form>
+    </div>
+</div>
